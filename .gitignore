@@ -36,3 +36,5 @@ airflow.cfg.bak
 # Sensitive configuration files
 .env
 config/airflow.cfg
+
+.history/

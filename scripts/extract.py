@@ -25,7 +25,8 @@ def main() -> None:
         writer.writerows(rows)
 
     print(f"Wrote raw file: {out_path}")
-
+    print(out_path)
 
 if __name__ == "__main__":
     main()
+    

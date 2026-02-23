@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import csv
 from pathlib import Path
-
+import sys
 
 def newest_csv(folder: Path) -> Path:
     files = sorted(folder.glob("orders_*.csv"))
@@ -12,6 +12,8 @@ def newest_csv(folder: Path) -> Path:
 
 
 def main() -> None:
+
+    
     raw_dir = Path("/opt/airflow/data/raw")
     clean_dir = Path("/opt/airflow/data/clean")
     clean_dir.mkdir(parents=True, exist_ok=True)
