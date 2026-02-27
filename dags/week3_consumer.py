@@ -20,7 +20,12 @@ with DAG(
         bash_command="ls /opt/airflow/data/clean/*.csv >/dev/null 2>&1",
         poke_interval=10,
         timeout=300,
-        mode='reschedule',
+        mode="reschedule",
+    )
+
+    list_clean_files = BashOperator(
+        task_id="list_clean_files",
+        bash_command='ls -1 /opt/airflow/data/clean/*.csv',
     )
 
     downstream_task = BashOperator(
@@ -28,4 +33,4 @@ with DAG(
         bash_command='echo "Consuming cleaned data"',
     )
 
-    wait_for_etl >> downstream_task
+    wait_for_etl >> list_clean_files >> downstream_task
